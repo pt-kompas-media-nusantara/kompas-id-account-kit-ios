@@ -1,0 +1,39 @@
+name: KompasAccountKitGenerated
+options:
+  bundleIdPrefix: id.kompas.app.account
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "16.4"
+  generateEmptyDirectories: true
+configs:
+  Debug:
+    type: debug
+  Release:
+    type: release
+settings:
+  base:
+    PRODUCT_NAME: KompasAccountKit
+    SWIFT_VERSION: 5.9
+    IPHONEOS_DEPLOYMENT_TARGET: 13.0
+targets:
+  KompasAccountKit:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Sources
+    resources:
+      - path: Resources
+    settings:
+      base:
+        INFOPLIST_FILE: Sources/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: id.kompas.app.account
+    # dependencies:
+      # Tambahkan jika ada dependency ke modul lain
+      # - target: KompasCoreKit
+  # KompasAccountKitTests:
+  #   type: bundle.unit-test
+  #   platform: iOS
+  #   sources:
+  #     - path: Tests
+  #   dependencies:
+  #     - target: KompasAccountKit
