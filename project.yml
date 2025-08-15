@@ -1,39 +1,39 @@
 name: KompasAccountKitGenerated
+include:
+  - project.yml
 options:
   bundleIdPrefix: id.kompas.app.account
-  deploymentTarget:
-    iOS: "16.0"
-  xcodeVersion: "16.4"
-  generateEmptyDirectories: true
-configs:
-  Debug:
-    type: debug
-  Release:
-    type: release
-settings:
-  base:
-    PRODUCT_NAME: KompasAccountKit
-    SWIFT_VERSION: 5.9
-    IPHONEOS_DEPLOYMENT_TARGET: 13.0
+packages:
+  Yams:
+    url: 'https://github.com/jpsim/Yams'
+    from: 2.0.0
 targets:
   KompasAccountKit:
-    type: framework
+    type: application
     platform: iOS
+    deploymentTarget: '16.0'
     sources:
-      - path: Sources
-    resources:
-      - path: Resources
+      - Sources
     settings:
-      base:
-        INFOPLIST_FILE: Sources/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: id.kompas.app.account
-    # dependencies:
-      # Tambahkan jika ada dependency ke modul lain
-      # - target: KompasCoreKit
-  # KompasAccountKitTests:
-  #   type: bundle.unit-test
-  #   platform: iOS
-  #   sources:
-  #     - path: Tests
+      configs:
+        debug:
+          CUSTOM_BUILD_SETTING: debug
+        release:
+          CUSTOM_BUILD_SETTING: release
+
   #   dependencies:
-  #     - target: KompasAccountKit
+  #     - target: MyFramework
+  #     - carthage: Alamofire
+  #     - framework: Vendor/MyFramework.framework
+  #     - sdk: Contacts.framework
+  #     - sdk: libc++.tbd
+  #     - package: Yams
+  # MyFramework:
+  #   type: framework
+  #   platform: iOS
+  #   sources: [MyFramework]
+
+referensi
+https://medium.com/@daviddvd19/xcodegen-first-steps-%EF%B8%8F-a2d4655ced86
+https://medium.com/@daviddvd19/xcodegen-getting-deeper-2932474a5b59
+https://github.com/daviwiki/article-xcodegen-gettingdeeper
