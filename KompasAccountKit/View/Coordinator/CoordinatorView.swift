@@ -16,6 +16,11 @@ struct CoordinatorView: View {
             NavigationStack(path: self.$store.scope(state: \.path, action: \.path)) {
                 VStack {
                     Text("CoordinatorView by Nurirppan")
+                    Button("Login By Email") {
+                        self.store.send(.loginByEmailAction(.loginButtonTapped))
+                    }
+                    
+                    Spacer()
                 }
 
             } destination: { store in

@@ -44,11 +44,11 @@ import ComposableArchitecture
                         return .none
                     case .unauthorized:
                         return .none
-                    case let .error4xx(code, message):
+                    case .error4xx(_, _):
                         return .none
-                    case let .error5xx(code, message):
+                    case .error5xx(_, _):
                         return .none
-                    case let .unknown(message):
+                    case .unknown(_):
                         return .none
                     }
                 } else {

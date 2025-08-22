@@ -17,6 +17,8 @@ import ComposableArchitecture
         
     @ObservableState struct State: Equatable {
         var path = StackState<Path.State>()
+        
+        var loginByEmailState = LoginByEmailReducer.State()
     }
     
     // MARK: - Action
@@ -27,11 +29,16 @@ import ComposableArchitecture
         case path(StackActionOf<Path>)
         case popToRoot
         
+        case loginByEmailAction(LoginByEmailReducer.Action)
+        
     }
     
     // MARK: - Reducer Body
     
     var body: some Reducer<State, Action> {
+        Scope(state: \.loginByEmailState, action: \.loginByEmailAction) {
+            LoginByEmailReducer()
+        }
         Reduce { state, action in
             switch action {
                 // MARK: - Basic Navigation
@@ -60,6 +67,8 @@ import ComposableArchitecture
             case .path:
                 return .none
                 
+            case .loginByEmailAction(_):
+                return .none
             }
         }
         .forEach(\.path, action: \.path)
