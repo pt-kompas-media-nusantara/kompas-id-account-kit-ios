@@ -57,7 +57,6 @@ extension AuthUseCaseDependecy: DependencyKey {
                 switch result {
                 case let success as ResultsSuccess<UserDetailsAndMembershipResInterceptor>:
                     Logger.debug("\(success.data)")
-                    @Shared(.appStorage("accessToken")) var accessToken = 0
                     return
                 case let error as ResultsError<NetworkError>:
                     throw ApiErrorMapper.map(error)

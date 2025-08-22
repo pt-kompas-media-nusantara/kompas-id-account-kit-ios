@@ -7,6 +7,7 @@
 
 import SwiftUI
 import KompasIdLibrary
+import ComposableArchitecture
 
 @main
 struct KompasAccountKitApp: App {
@@ -17,7 +18,15 @@ struct KompasAccountKitApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StoreContainer(
+                store: Store(
+                    initialState: CoordinatorReducer.State(),
+                    reducer: {
+                        CoordinatorReducer()
+                    }
+                )) { store in
+                    CoordinatorView(store: store)
+                }
         }
     }
 }
