@@ -19,6 +19,7 @@ import ComposableArchitecture
         var path = StackState<Path.State>()
         
         var loginByEmailState = LoginByEmailReducer.State()
+        var myAccountTabState = MyAccountTabReducer.State()
     }
     
     // MARK: - Action
@@ -30,6 +31,7 @@ import ComposableArchitecture
         case popToRoot
         
         case loginByEmailAction(LoginByEmailReducer.Action)
+        case myAccountTabAction(MyAccountTabReducer.Action)
         
     }
     
@@ -38,6 +40,9 @@ import ComposableArchitecture
     var body: some Reducer<State, Action> {
         Scope(state: \.loginByEmailState, action: \.loginByEmailAction) {
             LoginByEmailReducer()
+        }
+        Scope(state: \.myAccountTabState, action: \.myAccountTabAction) {
+            MyAccountTabReducer()
         }
         Reduce { state, action in
             switch action {
@@ -68,6 +73,8 @@ import ComposableArchitecture
                 return .none
                 
             case .loginByEmailAction(_):
+                return .none
+            case .myAccountTabAction(_):
                 return .none
             }
         }

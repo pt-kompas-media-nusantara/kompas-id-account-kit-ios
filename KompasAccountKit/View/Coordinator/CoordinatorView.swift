@@ -19,6 +19,12 @@ struct CoordinatorView: View {
                     Button("Login By Email") {
                         self.store.send(.loginByEmailAction(.loginButtonTapped))
                     }
+                    .padding(.vertical, 10)
+                    
+                    Button("Tab Akun Saya") {
+                        self.store.send(.myAccountTabAction(.onAppear))
+                    }
+                    .padding(.vertical, 10)
                     
                     Spacer()
                 }

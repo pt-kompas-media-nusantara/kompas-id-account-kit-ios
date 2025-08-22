@@ -1,5 +1,5 @@
 //
-//  AuthUseCaseInjectorDependency.swift
+//  AuthUseCaseDependecy.swift
 //  kompasid
 //
 //  Created by Kompas Digital on 12/03/25.
