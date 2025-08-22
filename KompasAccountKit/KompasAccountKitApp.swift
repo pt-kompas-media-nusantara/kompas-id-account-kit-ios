@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import KompasIdLibrary
 
 @main
 struct KompasAccountKitApp: App {
+    
+    init() {
+        KompasIdLibrary.KoinInitializerKt.doInitKoin()
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

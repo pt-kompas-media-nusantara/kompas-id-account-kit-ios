@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23F1A26D2E57FE7500361801 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 23F1A26C2E57FE7500361801 /* ComposableArchitecture */; };
+		23F1A2912E5820E000361801 /* NetDataLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 23F1A2902E5820E000361801 /* NetDataLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23F1A2912E5820E000361801 /* NetDataLibrary in Frameworks */,
 				23F1A26D2E57FE7500361801 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = KompasAccountKit;
 			packageProductDependencies = (
 				23F1A26C2E57FE7500361801 /* ComposableArchitecture */,
+				23F1A2902E5820E000361801 /* NetDataLibrary */,
 			);
 			productName = KompasAccountKit;
 			productReference = 238A249F2E4F656800BB131D /* KompasAccountKit.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				23F1A26B2E57FE7500361801 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				23F1A28F2E5820E000361801 /* XCRemoteSwiftPackageReference "kompas-mobile-netdatalibrary" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 238A24A02E4F656800BB131D /* Products */;
@@ -347,6 +351,14 @@
 				version = 1.17.1;
 			};
 		};
+		23F1A28F2E5820E000361801 /* XCRemoteSwiftPackageReference "kompas-mobile-netdatalibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pt-kompas-media-nusantara/kompas-mobile-netdatalibrary";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.81;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -354,6 +366,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 23F1A26B2E57FE7500361801 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		23F1A2902E5820E000361801 /* NetDataLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23F1A28F2E5820E000361801 /* XCRemoteSwiftPackageReference "kompas-mobile-netdatalibrary" */;
+			productName = NetDataLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
