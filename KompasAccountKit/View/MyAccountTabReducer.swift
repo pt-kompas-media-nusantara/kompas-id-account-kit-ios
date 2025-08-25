@@ -27,10 +27,11 @@ import ComposableArchitecture
         case onAddEmailTapped
         case onAddPhoneNumberTapped
         
-        case userDetailResponse(Result<Void, any Error>)
+        case userDetailResponse(Result<UserDetailModelWrapper, any Error>)
     }
     
     @Dependency(\.personalInfoDependency) var personalInfoDependency
+    private enum CancelID { case personalInfo }
     
     var body: some Reducer<State, Action> {
         Reduce { _, action in
@@ -53,7 +54,9 @@ import ComposableArchitecture
                         try await self.personalInfoDependency.userDetail()
                     }))
                 }
-            case .userDetailResponse(.success):
+                .cancellable(id: CancelID.personalInfo)
+            case let .userDetailResponse(.success(response)):
+                print("\(response)")
                 return .none
             case let .userDetailResponse(.failure(error)):
                 if let apiError = error as? ApiServicesError {

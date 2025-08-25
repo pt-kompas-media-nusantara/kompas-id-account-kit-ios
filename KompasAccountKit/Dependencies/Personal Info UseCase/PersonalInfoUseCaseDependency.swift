@@ -12,10 +12,11 @@ import KompasIdLibrary
 // MARK: - PersonalInfoDependency
 @DependencyClient struct PersonalInfoDependency {
     var getUserDetailsAndMembership: @Sendable () async throws -> Void
-    var userDetail: @Sendable () async throws -> Void
+//    var userDetail: @Sendable () async throws -> Void
+    var userDetail: @Sendable () async throws -> UserDetailModelWrapper
     var userMembership: @Sendable () async throws -> Void
 //    var getUserDetailsAndMembership: @Sendable () async throws -> UserDetailsAndMembershipModelWrapper
-//    var userDetail: @Sendable () async throws -> UserDetailModelWrapper
+    
 //    var userMembership: @Sendable () async throws -> UserMembershipModelWrapper
 }
 
@@ -56,8 +57,26 @@ extension PersonalInfoDependency: DependencyKey {
                     guard let data = success.data else {
                         throw ApiServicesError.unknown(message: "Error : ResultsSuccess<UserDetailResInterceptor>")
                     }
-                    print("\(data)")
-
+                    let model = UserDetailModelWrapper(
+                        idGender: Int(data.idGender),
+                        gender: data.gender,
+                        firstName: data.firstName,
+                        lastName: data.lastName,
+                        email: data.email,
+                        userGuid: data.userGuid,
+                        userStatus:
+                            UserStatusModelWrapper(
+                                isVerified: data.userStatus.isVerified,
+                                phoneVerified: data.userStatus.phoneVerified
+                            ),
+                        phoneNumber: data.phoneNumber,
+                        countryCode: data.countryCode,
+                        dateBirth: data.dateBirth,
+                        country: data.country,
+                        province: data.province,
+                        city: data.city
+                    )
+                    return model
                 case let error as ResultsError<NetworkError>:
                     throw ApiErrorMapper.map(error)
 
@@ -86,7 +105,27 @@ extension PersonalInfoDependency: DependencyKey {
 
     static let testValue = Self(
         getUserDetailsAndMembership: {},
-        userDetail: {},
+        userDetail: {
+            UserDetailModelWrapper(
+                idGender: 0,
+                gender: "data.gender",
+                firstName: "data.firstName",
+                lastName: "data.lastName",
+                email: "data.email",
+                userGuid: "data.userGuid",
+                userStatus:
+                    UserStatusModelWrapper(
+                        isVerified: false,
+                        phoneVerified: false
+                    ),
+                phoneNumber: "data.phoneNumber",
+                countryCode: "data.countryCode",
+                dateBirth: "data.dateBirth",
+                country: "data.country",
+                province: "data.province",
+                city: "data.city"
+            )
+        },
         userMembership: {}
     )
 
