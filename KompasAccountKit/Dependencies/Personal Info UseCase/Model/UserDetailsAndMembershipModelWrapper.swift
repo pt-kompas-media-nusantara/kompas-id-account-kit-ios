@@ -7,8 +7,11 @@
 
 import Foundation
 
+
 struct UserDetailsAndMembershipModelWrapper {
     let userDetail: UserDetailModelWrapper
     let userMembership: UserMembershipModelWrapper
+    let userHistoryMembership: UserHistoryMembershipModelWrapper
 }
+
 

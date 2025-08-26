@@ -26,6 +26,11 @@ struct CoordinatorView: View {
                     }
                     .padding(.vertical, 10)
                     
+                    Button("Tab Informasi Langganan") {
+                        self.store.send(.subscriptionInformationTabAction(.onAppear))
+                    }
+                    .padding(.vertical, 10)
+                    
                     Spacer()
                 }
 

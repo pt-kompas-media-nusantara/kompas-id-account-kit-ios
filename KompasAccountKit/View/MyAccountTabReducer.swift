@@ -31,7 +31,6 @@ import ComposableArchitecture
     }
     
     @Dependency(\.personalInfoDependency) var personalInfoDependency
-    private enum CancelID { case personalInfo }
     
     var body: some Reducer<State, Action> {
         Reduce { _, action in
@@ -54,7 +53,7 @@ import ComposableArchitecture
                         try await self.personalInfoDependency.userDetail()
                     }))
                 }
-                .cancellable(id: CancelID.personalInfo)
+                .cancellable(id: CancelID.userDetail)
             case let .userDetailResponse(.success(response)):
                 print("\(response)")
                 return .none
@@ -81,4 +80,11 @@ import ComposableArchitecture
             }
         }
     }
+}
+
+enum CancelID {
+    case userDetail
+    case userMembership
+    case userHistoryMembership
+    case getUserDetailsAndMembership
 }
